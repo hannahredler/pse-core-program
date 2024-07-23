@@ -1,3 +1,3 @@
-Merkel tree numerical example
-What is the round key operation in AES
-How do you expand the key into n+1 keys ins AES
+- Merkel tree numerical example - validate proof circuit
+- How do you expand the key into n+1 keys ins AES
+- Understand technical aspects of Poseidon hashing

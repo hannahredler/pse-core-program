@@ -1,7 +1,5 @@
 # Encryption
 
-**🤔 Consider the following:**
-
 1. What is the primary difference between symmetric and asymmetric encryption?
 
    The main difference between symmetric and asymmetric encryption is the no. of keys used. For symmetric encryption, only one key is used for both encrypting and decrypting the data. The key can be smaller, and the process is faster. However the data can normally only be encrypted and decrypted by one person as, if the key is leaked, the entire process is comprimised.
@@ -30,3 +28,25 @@
    - It can be efficiently incorporated into hardware, intel chips etc
    - It has stood the test of time, therefore is highly trusted (out since the 70s)
    - Patent-free (making it fairly cheap) unlike many elliptic curve models
+
+# Hashing
+
+1. What is a hash function and what are its primary uses in cryptography?
+
+   A hash function is a one-way function that takes an input and returns a fixed length output
+
+2. How does the SHA-256 hashing algorithm function, in simple terms?
+
+   SHA-256 works in several steps:
+
+   - DATA PRE-PROCESSING: it takes a variable length input and then pads it to get to a multiple of 512 bits
+   - MESSAGE EXPANSION: It takes the 512 bit word, and splits it into 16 32-bit words. Then it takes these and splits into 64x 32 bit words
+   - MESSAGE COMPRESSION: 64 word message block is then processed via 64 rounds, each containing the folowing steps:
+     - Find the round constant: 32 bit constant value based on position in sequence
+     - Calculate message schedule: 64-entry message schedule generated based on the block and the round constant
+     - Update working variable:
+     - Calculate the hash value: Final step after all rounds - combine working variables to produce the 256 bit hash value
+
+3. What is the Poseidon hash function and why is it particularly useful in ZKPs?
+
+   Poseidon hash function is a newer function used for zero-knowledge proof systems. Its an alternative to SHA-256 and made to optimize for this use case specifically, as SHA-256 can take up to a minute to verify proofs (Z-cash). Poseidon is able to operate in a big finite field, over large circuits in a much faster time. It can prove the existence of an item in a very large merkel tree in a very short amount of time (1 second)
