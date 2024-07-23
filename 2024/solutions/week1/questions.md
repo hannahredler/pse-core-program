@@ -73,3 +73,51 @@
    Merkle trees are useful for efficient and secure verification of large data structures because they allow the number of operations required for verification to be minimized. To see if data is corrupted, it is sufficient to compare the root hash of the tree. If they are the same, then the data is the same. If they are different, then some of the data has been corrupted. If this is the case, you can request the children hashes and keep traversing through the differing nodes until you find the corrupted value. This is much faster than validating every piece of data in the tree.
 
    Similarly if you want to prove a particular transaction is in a merkle tree you dont need to hash every single step. You just need the sibling node on each level, and hash once at each level. This vastly reduces the number of hashes required to calculate.
+
+# Digital Signatures
+
+1.  Can you describe what digital signatures are and why they are essential in digital communications?
+
+    It doesn't make sense to encrypt every bit of data (not very efficient when the payload is large). Thus, often we send the data first, and then a signature with a reference to the data to verify that the data did in fact come from a known and trusted source.
+
+2.  Explain the workings of the Digital Signature Algorithm (DSA).
+
+    DSA is an algorithm for creating a digital signature, using prime numbers and modulus.
+
+    - First, you generate a key pair. The private key stays private, and the public key is shared.
+
+# Discrete Logarithm Problem Based Cryptography
+
+1. What is the Discrete Logarithm Problem (DLP)?
+
+The discrete logarithm is as follows;
+
+- Let p be a large prime, and
+- g a generator that generates numbers in the group $Z_p^*$
+
+Then the result $x = g^b mod(p)$ is computationally infeasible to solve for b
+
+2. How does the Diffie-Hellman protocol work?
+
+   Diffie-Hellman protocol uses the DLP as such:
+
+   - Anna and Bob select a large prime p, and a generator g. These are public.
+   - Anna choses a private key a where $1 < a < p$ and calculates the public key as $A=g^a mod p$.
+   - Bob choses a private key b where $1 < b < p$ and calculates the public key as $B=g^b mod p$
+   - They pass eachother the public keys, and then each calculate the same key by raising $B^a$ and $A^b$
+   - This way they have the same key to encrypt, without ever having to share the secrets
+
+3. What is the main idea behind ElGamal encryption?
+
+   ElGamal encryption is an application of the Diffie-Hellman protocol.
+
+   - Anna and Bob select a large prime p, and a generator g. These are public.
+   - Anna choses a private key a where $1 < a < p$ and calculates the public key as $A=g^a mod p$.
+   - She shares with Bob A, p, g
+   - Bob calculates B like above, and encypts the message $M = m x A^b mod p
+   - He sends back the message [B,M]
+   - Alice can decrypt this message using her calculated values and his encrypted message
+
+4. Can you name a drawback of using DLP-based systems?
+
+   They can be slow, require large key sized for high levels of security and can be vulnerable to certain attacks.
