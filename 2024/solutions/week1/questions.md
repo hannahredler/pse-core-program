@@ -50,3 +50,26 @@
 3. What is the Poseidon hash function and why is it particularly useful in ZKPs?
 
    Poseidon hash function is a newer function used for zero-knowledge proof systems. Its an alternative to SHA-256 and made to optimize for this use case specifically, as SHA-256 can take up to a minute to verify proofs (Z-cash). Poseidon is able to operate in a big finite field, over large circuits in a much faster time. It can prove the existence of an item in a very large merkel tree in a very short amount of time (1 second)
+
+# Merkle Trees
+
+1. Can you describe the structure of a Merkle tree?
+
+   A merkle tree consists of the following
+
+   - The leafs are chunks of data, hashed
+   - each pair of leaves are hashed to create a parent hash
+   - parent nodes are hashed together until we reach a final root node
+
+2. How are Merkle trees used within the blockchain context?
+
+   Merkle trees are used for:
+
+   - Proof of Work Mining: When mining a bitcoin block, miners have to take the block data, and search for a nonce that, when all hashed together, creates a hash that satisfies certain conditions. This involves rehashing potentially trillions of times. By arranging the transactions in a merkle tree, they only have to include the root hash in the block header and hash that, rather than hashing all the transactions which is expensive
+   - Verification: To see if an item is in a tree, I only need the sibling hashes as I go up the tree. Requires much less computational power.
+
+3. Why are Merkle trees useful for efficient and secure verification of large data structures?
+
+   Merkle trees are useful for efficient and secure verification of large data structures because they allow the number of operations required for verification to be minimized. To see if data is corrupted, it is sufficient to compare the root hash of the tree. If they are the same, then the data is the same. If they are different, then some of the data has been corrupted. If this is the case, you can request the children hashes and keep traversing through the differing nodes until you find the corrupted value. This is much faster than validating every piece of data in the tree.
+
+   Similarly if you want to prove a particular transaction is in a merkle tree you dont need to hash every single step. You just need the sibling node on each level, and hash once at each level. This vastly reduces the number of hashes required to calculate.
