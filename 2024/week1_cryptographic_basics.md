@@ -123,6 +123,7 @@ TtheBC01 has a good example of a Merkle tree circuit [here](https://github.com/T
 The main component is Poseidon hash. Poseidon hash maps sequences of elements to a fixed-length sequence of elements. You can use it to hash messages of arbitrary length or fixed length (such as in a Merkle tree, where typically two elements are hashed). Here you initialize the Poseidon hash with n = 2
 
 You may also need a Mux. Mux is a component that takes two inputs and outputs one of them based on a selector. In this case, the selector is the index of the element in the Merkle tree.
+
 ```circom
 poseidons[i] = Poseidon(2);
 mux[i] = MultiMux1(2);
@@ -143,19 +144,20 @@ Encryption is a technique used to encode data, making it readable only to those 
 **Asymmetric Encryption** - Also known as public-key encryption, this method uses a pair of keys: one for encryption and another for decryption. The RSA algorithm is one of the best known public-key algorithms.
 
 The key difference between the two is the number of keys used: symmetric encryption uses one key for both encrypting and decrypting, while asymmetric encryption uses a different key for each (one public, one private). For a deeper understanding of symmetric and asymmetric encryption, please explore these resources:
+
 - [Symmetric vs. Asymmetric Encryption – What are differences?](https://www.ssl2buy.com/wiki/symmetric-vs-asymmetric-encryption-what-are-differences)
 - [AES Explained (Advanced Encryption Standard) - Computerphile [14:13]](https://www.youtube.com/watch?v=O4xNJsjtN6E)
 - [Prime Numbers & RSA Encryption Algorithm - Computerphile [15:06]](https://www.youtube.com/watch?v=JD72Ry60eP4)
 - [What Is AES Encryption and How Does It Work?](https://www.simplilearn.com/tutorials/cryptography-tutorial/aes-encryption)
 - [What is RSA encryption and how does it work?](https://www.comparitech.com/blog/information-security/rsa-encryption/)
 
-
 :::info
 **🤔 Consider the following:**
+
 1. What is the primary difference between symmetric and asymmetric encryption?
 2. Can you briefly explain how AES (Advanced Encryption Standard) works?
-3. What makes RSA a popular choice for public-key encryption? 
-:::
+3. What makes RSA a popular choice for public-key encryption?
+   :::
 
 ### Hash Functions, Merkle Trees
 
@@ -166,34 +168,37 @@ A hash function takes an input and returns a fixed-size string of bytes. **SHA-2
 The primary characteristics of a good hash function are [preimage resistance](https://en.wikipedia.org/wiki/Preimage_attack), second preimage resistance, and [collision resistance](https://en.wikipedia.org/wiki/Collision_resistance), ensuring data security and integrity. In blockchain technology, hash functions create an unalterable, unique representation of each block's content, contributing to the immutability and transparency of the system.
 
 Explore these resources to further your understanding:
+
 - [What Is SHA-256 Algorithm & How It Works](https://www.ssldragon.com/blog/sha-256-algorithm/)
 - [How is SHA-256 used in blockchain, and why?](https://www.educative.io/answers/how-is-sha-256-used-in-blockchain-and-why)
 - [Poseidon: A new hash function for zero-knowledge proof systems](https://eprint.iacr.org/2019/458.pdf)
 - [USENIX Security '21 - Poseidon: A New Hash Function for Zero-Knowledge Proof Systems [10:45]](https://www.youtube.com/watch?v=hUx3WpDV_l0)
-    - This video is quite technical, but the first few minutes provide a good explanation for the motivation behind the Poseidon hash function.
+  - This video is quite technical, but the first few minutes provide a good explanation for the motivation behind the Poseidon hash function.
 
 :::info
 **🤔 Consider the following:**
+
 1. What is a hash function and what are its primary uses in cryptography?
 2. How does the SHA-256 hashing algorithm function, in simple terms?
 3. What is the Poseidon hash function and why is it particularly useful in ZKPs?
-:::
+   :::
 
 #### Merkle Trees
 
 A Merkle tree is a core component of blockchain and cryptography. It's a binary tree filled with cryptographic hashes. This structure enables efficient and secure verification of the contents of large data structures. To understand more about Merkle trees, read the following:
+
 - [How Merkle Trees Enable the Decentralized Web! [10:05]](https://www.youtube.com/watch?v=3giNelTfeAk)
 - [Merkle Trees and Merkle Roots Explained](https://academy.binance.com/en/articles/merkle-trees-and-merkle-roots-explained)
 - [Visualizing Efficient Merkle Trees for Zero-Knowledge Proofs](https://kndrck.co/posts/efficient-merkletrees-zk-proofs/)
 - [The Ultimate Merkle Tree Guide in Solidity](https://soliditydeveloper.com/merkle-tree)
 
-
 :::info
 **🤔 Consider the following:**
+
 1. Can you describe the structure of a Merkle tree?
 2. How are Merkle trees used within the blockchain context?
 3. Why are Merkle trees useful for efficient and secure verification of large data structures?
-:::
+   :::
 
 ### Digital Signatures (Schnorr)
 
@@ -202,51 +207,58 @@ Digital signatures ensure the integrity and authenticity of digital messages or 
 In PKC, anyone can encrypt their message with the receiver's public key, and only the receiver can decrypt the message with their private key. In digital signatures, on the other hand, if a signer generates a signature for a message using their private key, anyone can validate it using the signer's public key. Therefore, the message of the signature is made public, which distinguishes it from cryptographic commitments.
 
 Start your exploration of digital signatures with this intuitive video:
+
 - [What are Digital Signatures? - Computerphile [10:16]](https://www.youtube.com/watch?v=s22eJ1eVLTU)
 
 **Schnorr Signature**: Schnorr signatures are a digital signature scheme known for their simplicity and efficiency.
+
 - [Schnorr Digital Signature (by GeeksForGeeks)](https://www.geeksforgeeks.org/schnorr-digital-signature/)
 - [Schnorr Digital Signature [4:58]](https://www.youtube.com/watch?v=mV9hXEFUB6A)
 
 **Exploring DSA**: Get a deep dive into the Digital Signature Algorithm (DSA) and its significance in bolstering internet security. Through the listed resources, understand the mechanics of DSA and its use cases.
+
 - [Digital Signature Algorithm (DSA) in Cryptography](https://www.simplilearn.com/tutorials/cryptography-tutorial/digital-signature-algorithm)
 - [Digital Signature Algorithm (DSA) - Cryptography [5:46]](https://www.youtube.com/watch?v=iS1nK4G6EtA)
 - [Digital Signature Algorithm (DSA) explained with example [24:32]](https://www.youtube.com/watch?v=MtT3NBfpV5Q)
 
 :::info
 **🤔 Consider the following:**
+
 1. Can you describe what digital signatures are and why they are essential in digital communications?
 2. Explain the workings of the Digital Signature Algorithm (DSA).
-:::
+   :::
 
 ### DLP-based Public-Key Cryptography (DLP, DH, Elgamal)
 
 While RSA encryption is based on the hardness of factoring problem, there is another public key cryptography system based on hardness of Discrete Logarithm Problem (DLP).
 
-1. **Discrete Log Problem (DLP):** This is a cornerstone problem in public-key cryptography and underlies many key exchange and encryption algorithms. Understanding DLP provides a foundation for the remaining topics.
+1.  **Discrete Log Problem (DLP):** This is a cornerstone problem in public-key cryptography and underlies many key exchange and encryption algorithms. Understanding DLP provides a foundation for the remaining topics.
+
     - [The Discrete Logarithm Problem - Khan Academy [1:55]](https://youtu.be/SL7J8hPKEWY)
     - [Public key cryptography using discrete logarithms](https://www.di-mgt.com.au/public-key-crypto-discrete-logs-0.html)
 
-2. **Diffie-Hellman Key Exchange:** This is one of the earliest practical implementations of key exchange protocols based on the Discrete Log Problem. It's critical to understand how secure communication can be established over insecure channels.
+2.  **Diffie-Hellman Key Exchange:** This is one of the earliest practical implementations of key exchange protocols based on the Discrete Log Problem. It's critical to understand how secure communication can be established over insecure channels.
 
-    This protocol is significant as it enables secure communication over insecure channels by allowing two parties to generate a shared secret key, which can then be used for encryption and decryption of messages
-    - [Secret Key Exchange (Diffie-Hellman) - Computerphile [8:39]](https://www.youtube.com/watch?v=NmM9HA2MQGI)
-    - [Diffie Hellman -the Mathematics bit- Computerphile [7:04]](https://youtu.be/Yjrfm_oRO0w)
-    - [Implementation of Diffie-Hellman Algorithm
-](https://www.geeksforgeeks.org/implementation-diffie-hellman-algorithm/)
+        This protocol is significant as it enables secure communication over insecure channels by allowing two parties to generate a shared secret key, which can then be used for encryption and decryption of messages
+        - [Secret Key Exchange (Diffie-Hellman) - Computerphile [8:39]](https://www.youtube.com/watch?v=NmM9HA2MQGI)
+        - [Diffie Hellman -the Mathematics bit- Computerphile [7:04]](https://youtu.be/Yjrfm_oRO0w)
+        - [Implementation of Diffie-Hellman Algorithm
 
-3. **ElGamal Encryption:** This is a public-key encryption method that utilizes the principles of DLP. This will allow you to see a practical application of these abstract concepts in a real-world encryption scheme.
+    ](https://www.geeksforgeeks.org/implementation-diffie-hellman-algorithm/)
+
+3.  **ElGamal Encryption:** This is a public-key encryption method that utilizes the principles of DLP. This will allow you to see a practical application of these abstract concepts in a real-world encryption scheme.
     - [Intro to the ElGamal Cryptosystem [8:20]](https://www.youtube.com/watch?v=oQqr8d5s3Uk)
     - [The ElGamal Algorithm: a simple example [6:38]](https://www.youtube.com/watch?v=4xVCrTb_1II)
     - [ElGamal Encryption Algorithm](https://www.geeksforgeeks.org/elgamal-encryption-algorithm/)
 
 :::info
 **🤔 Consider the following:**
+
 1. What is the Discrete Logarithm Problem (DLP)?
 2. How does the Diffie-Hellman protocol work?
 3. What is the main idea behind ElGamal encryption?
 4. Can you name a drawback of using DLP-based systems?
-:::
+   :::
 
 ### Cryptographic Commitments
 
@@ -262,6 +274,7 @@ You can break down the concept of commitment into two parts: commit and open (re
 There is always a commit phase and a reveal phase, in other words you first encrypt a secret and then reveal it later.
 
 #### Pedersen Commitments (Optional)
+
 Pedersen Commitments are a type of cryptographic primitive that allows you to commit to a certain value while keeping it hidden, with the ability to disclose the committed value later. They're often used to achieve privacy-preserving properties in cryptographic protocols. For more on Pedersen Commitments, review these materials:
 
 - [Pedersen Commitments](https://asecuritysite.com/encryption/ped)
@@ -271,11 +284,12 @@ As a final touch on this section, [this video [10:32]](https://www.youtube.com/w
 
 :::info
 **🤔 Consider the following:**
+
 1. What is the main purpose of Cryptographic Commitments?
 2. What type of information does a Polynomial Commitment hide and reveal?
 3. How do Pedersen Commitments contribute to privacy in cryptography?
 4. Why are Cryptographic Commitments important in blockchain technology?
-:::
+   :::
 
 ### Intro to Elliptic Curve Cryptography
 
@@ -323,4 +337,5 @@ If you would like to know more about it, you can check out the following resourc
 3. **Hash Functions**: What features make SHA-256 and Poseidon good hash functions for ensuring data integrity? Mention one unique advantage of Poseidon.
 4. **Merkle Trees**: Explain how Merkle trees can help verify data in a large database efficiently.
 5. **Cryptographic Commitments**: How can Pedersen Commitments be used in a blockchain protocol to maintain transaction privacy?
+
 6. **Digital Signatures**: How can you verify the authenticity of a digitally signed document?

@@ -121,3 +121,53 @@ Then the result $x = g^b mod(p)$ is computationally infeasible to solve for b
 4. Can you name a drawback of using DLP-based systems?
 
    They can be slow, require large key sized for high levels of security and can be vulnerable to certain attacks.
+
+# Cryptographic Commitments
+
+1. What is the main purpose of Cryptographic Commitments?
+
+   It is a way for someone to commit to a piece of data without revealing it. Later, they can reveal it and a verifier can confirm that it is the information commited to originally.
+
+2. What type of information does a Polynomial Commitment hide and reveal?
+
+3. How do Pedersen Commitments contribute to privacy in cryptography?
+
+Pederson commitme 4. Why are Cryptographic Commitments important in blockchain technology?
+
+They are important because they allow for privacy; by proving you know information without revealing it, you can conceal private information
+
+WEEKLY QUESTIONS:
+
+1. Symmetric vs. Asymmetric Encryption: What are the key differences between symmetric and asymmetric encryption? Provide a practical use case for each.
+
+   Symmetric encryption uses one key for both encrypting and decrypting data. Asymmetric encryption used 2 keys; a public key for encrypting, and a private key for decrypting.
+
+   Symmetric encryption is faster so can be better for sending large amounts of data, or in cases where the key won't need to be shared to anyone else. Asymmetric encryption is slower to do, however it enables sharing keys safely across the internet as the public key can be distributed so long as the private key is safe.
+
+   A practical use case for symmetric data encryption is a company saving large volumes of sensitive data in its own database. A practical use case for asymmetric is blockchain; users distribute a public key for others to verify transactions, and only they have the private key to sign the transaction.
+
+2. Public-Key Cryptography and Key Exchange Protocols: How can the Diffie-Hellman protocol enhance security in a messaging application?
+
+   The Diffie-Hellman protocol is a method for two users to generate a shared private key whilst maintaining their own secrets as private and ensuring that an interceptor could never gain access to their secrets nor their resulting private key.
+
+3. Hash Functions: What features make SHA-256 and Poseidon good hash functions for ensuring data integrity? Mention one unique advantage of Poseidon.
+
+   SHA0256 and Poseidon are good hash functions because they are secure, and not breakable by current technology. A benefit of Poseidon over SHA is that it was designed for ZK proofs and for large finite fields and circuits, and therefore is much more efficient.
+
+4. Merkle Trees: Explain how Merkle trees can help verify data in a large database efficiently.
+
+   Merkle trees take chunks of data, and hash them. Then each parent node between pairs of data is a cryptographic hash of the children nodes. These pairs are calculated up the tree until a parent node is reached.
+
+   Since any change in any of the inputs would cause the root node to be changed, it becomes sufficient to compare the root hashes of two trees to ensure that all of the underlying data is the same.
+
+   In addition, to verify that a data item is correct in a tree, it is sufficient to take the sibling nodes and hash all the way up to reach the same root node, rather than having to hash every piece of data again which could be expensive.
+
+5. Cryptographic Commitments: How can Pedersen Commitments be used in a blockchain protocol to maintain transaction privacy?
+
+   Pederson commitments allow you to commit to a value without revealing it at the time. This allows it to be verified later that you do in fact know the value.
+
+   For transaction privacy, this means that not all the data needs to be submitted to the blockchain, only a minimal proof.
+
+6. Digital Signatures: How can you verify the authenticity of a digitally signed document?
+
+   A user sends some data, along with a digital signature verifying the identity of the server, and the public key. The receiver can then decrypt the message and ensure it does in fact say what they were expecting and prove that it came from the verified source
